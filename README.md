@@ -3,6 +3,7 @@
 
 [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
 [![Twitter](https://img.shields.io/twitter/follow/theheap_.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=theheap_)
+[![](https://slackin-onxcmypksl.now.sh/badge.svg)](https://slackin-onxcmypksl.now.sh/)
 
 Welcome to one of THE HEAP's open source projects! For the month of July we're building _Penny_, a Slack chatbot to encourage people to draw more.
 
@@ -41,7 +42,10 @@ To contribute successfully to this project it might take a bit of time to setup 
 
 # Project Setup
 
-Instructions pending!
+Project setup will be explained starting July 1st, but for now...
+
+1. You'll need to [join our slack channel](https://slackin-onxcmypksl.now.sh/) where we'll be building Penny and talking / planning development.
+
 
 # Terminology
 
