@@ -18,10 +18,14 @@ _Penny_'s goal to is to be a slackbot that can encourage people to draw more. Pe
 - You have a team on slack. You decide you want to spice up your slack-lives by having a new bot. This bot (Penny) will provide *drawing prompts* to you and your team mates. (A drawing prompt is a word or set of words that are, at the most basic level, a suggestion for something to draw.).
 - Perhaps, every day, Penny will announce on a slack channel (let's called it `#daily-drawings`) that there is a new prompt for today:
   - Today's prompt is: `a sad unicycle`
+  
+
+## Scenario 1 (aka, MVP 0.2)
+  
 - Somehow Penny has to come up with these suggestions, so why don't we help? We'll try and build Penny so that _we can give it prompts_. This way, your entire team can add a prompt to the _prompt database_; and Penny can draw from the database whenever it wants. This way the drawings can be more relevant to your team -- either in a serious or silly way.
 - So there you have it! Penny will dispense ideas to draw and your team can also help provide those ideas.
 
-## Scenario 2 (aka, MVP 0.2)
+## Scenario 2 (aka, MVP 0.3)
 
 What about the actual drawings your team will do? Is there a way we can share them, or make it so that Penny can display them for us when they are done? Perhaps! (I don't actually know if this is possible yet with the slack api, so that's why it's in our MVP 0.2!). Here's how that might work!
 
