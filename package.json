@@ -1,0 +1,25 @@
+{
+  "name": "penny",
+  "version": "0.0.1",
+  "description": "Slackbot to encourage drawing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-heap/penny.git"
+  },
+  "author": "Tyler Sloane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the-heap/penny/issues"
+  },
+  "homepage": "https://github.com/the-heap/penny#readme",
+  "dependencies": {
+    "@slack/client": "^3.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

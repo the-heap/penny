@@ -46,19 +46,29 @@ To contribute successfully to this project it might take a bit of time to setup 
 
 # Project Setup
 
-Project setup will be explained starting July 1st, but for now...
-
 1. You'll need to [join our slack channel](https://slackin-onxcmypksl.now.sh/) where we'll be building Penny and talking / planning development.
+2. Clone this repo!
 
+```
+git clone git@github.com:the-heap/penny.git
+```
+
+3. Install dependencies
+
+```sh
+# change directories to Penny
+cd penny
+
+# install libraries and dependencies
+npm install
+```
 
 # Terminology
-
 The following terminology might help to clarify some aspects of the project.
 
-- **Prompt** A suggestion of something to draw.
-- **Prompt Database** A place that stores many prompts.
+* *Prompt* A suggestion of something to draw.
+* *Prompt Database* A place that stores many prompts.
 
 # Other
-
-- Thanks for being you
-- Follow The Heap on [twitter](https://twitter.com/theheap_) and subscribe to our [youtube channel](https://www.youtube.com/channel/UCIaeBxFZOzLA20sSAUENXRg)
+* Thanks for being you
+* Follow The Heap on [twitter](https://twitter.com/theheap_) and subscribe to our [youtube channel](https://www.youtube.com/channel/UCIaeBxFZOzLA20sSAUENXRg)
