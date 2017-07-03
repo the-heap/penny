@@ -1,3 +1,7 @@
+// ===========================
+// Project setup!
+// ===========================
+
 // NATIVE NODE LIBRARIES
 const readline = require("readline");
 
@@ -26,26 +30,27 @@ if (process.env.SLACK_BOT_TOKEN) {
   });
 }
 
+// ===========================
+// Bot setup!
+// ===========================
+
 function init_bot() {
   console.log("Initializing Penny...");
 
-  // ==================================
-  // BOT variables and Constants
-  // ==================================
+  /*** BOT variables and Constants ***/
 
   var rtm = new RtmClient(bot_token);
   let channel;
 
-  // =============================
-  // Real Time Event Hanlders
-  // =============================
+  /*** Real Time Event Handlers ***/
 
-  // The client will emit an RTM.AUTHENTICATED event on successful connection, with the `rtm.start` payload if you want to cache it
+  // Function to handle the bot's authentication:
+  // Sets the channel that Penny can activate in.
+  // TODO: Allow penny to operate in multiple channels
   rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, function(rtmStartData) {
     console.log(
-      `Initializing ${rtmStartData.self.name} for  ${rtmStartData.team.name}`
+      `Starting ${rtmStartData.self.name} for  ${rtmStartData.team.name}`
     );
-
     for (let c of rtmStartData.channels) {
       if (c.is_member && c.name === "draw_it") {
         channel = c.log;
@@ -53,11 +58,12 @@ function init_bot() {
     }
   });
 
-  // id an incoming message
+  // Handle Receiving a message
   rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
     console.log("Message:", message);
   });
 
+  // Handle the connection opening
   rtm.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, function() {
     // rtm.sendMessage("Hello I am Penny, I just connected from the server!", 'C63GFH05V');
   });
