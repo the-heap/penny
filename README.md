@@ -1,9 +1,11 @@
 # penny
-> Slackbot to encourage drawing
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
 [![Twitter](https://img.shields.io/twitter/follow/theheap_.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=theheap_)
 [![](https://slackin-onxcmypksl.now.sh/badge.svg)](https://slackin-onxcmypksl.now.sh/)
+
+> Slackbot to encourage drawing
 
 Welcome to one of THE HEAP's open source projects! For the month of July we're building _Penny_, a Slack chatbot to encourage people to draw more.
 
@@ -18,10 +20,10 @@ _Penny_'s goal to is to be a slackbot that can encourage people to draw more. Pe
 - You have a team on slack. You decide you want to spice up your slack-lives by having a new bot. This bot (Penny) will provide *drawing prompts* to you and your team mates. (A drawing prompt is a word or set of words that are, at the most basic level, a suggestion for something to draw.).
 - Perhaps, every day, Penny will announce on a slack channel (let's called it `#daily-drawings`) that there is a new prompt for today:
   - Today's prompt is: `a sad unicycle`
-  
+
 
 ## Scenario 1 (aka, MVP 0.2)
-  
+
 - Somehow Penny has to come up with these suggestions, so why don't we help? We'll try and build Penny so that _we can give it prompts_. This way, your entire team can add a prompt to the _prompt database_; and Penny can draw from the database whenever it wants. This way the drawings can be more relevant to your team -- either in a serious or silly way.
 - So there you have it! Penny will dispense ideas to draw and your team can also help provide those ideas.
 
@@ -42,6 +44,7 @@ To contribute successfully to this project it might take a bit of time to setup 
 
 1. Understanding the [project / product](https://github.com/the-heap/penny/issues/1) and what we're trying to build.
 2. Understanding how to [contribute](./CONTRIBUTING.md).
+3. When you contribute, you can submit yourself as a contributor to the project so that your work is recognized in the project. See "All Contributors" below for more information.
 3. Read Project Components below, for getting setup.
 
 # Project Setup
@@ -72,3 +75,15 @@ The following terminology might help to clarify some aspects of the project.
 # Other
 * Thanks for being you
 * Follow The Heap on [twitter](https://twitter.com/theheap_) and subscribe to our [youtube channel](https://www.youtube.com/channel/UCIaeBxFZOzLA20sSAUENXRg)
+
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars3.githubusercontent.com/u/12987958?v=3" width="75px;"/><br /><sub>Tyler</sub>](http://tylersloane.com)<br />[💬](#question-teesloane "Answering Questions") [💻](https://github.com/teesloane/Penny/commits?author=teesloane "Code") [📖](https://github.com/teesloane/Penny/commits?author=teesloane "Documentation") [🚇](#infra-teesloane "Infrastructure (Hosting, Build-Tools, etc)") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

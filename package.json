@@ -4,7 +4,16 @@
   "description": "Slackbot to encourage drawing.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "precommit": "lint-staged",
+    "add-contributor": "all-contributors add",
+    "generate": "all-contributors generate"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,6 +29,10 @@
     "@slack/client": "^3.10.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "all-contributors-cli": "^4.3.0",
+    "husky": "^0.14.2",
+    "lint-staged": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "prettier": "^1.5.2"
   }
 }

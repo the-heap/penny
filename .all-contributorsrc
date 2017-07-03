@@ -1,0 +1,23 @@
+{
+  "projectName": "Penny",
+  "projectOwner": "teesloane",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 75,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "teesloane",
+      "name": "Tyler",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12987958?v=3",
+      "profile": "http://tylersloane.com",
+      "contributions": [
+        "question",
+        "code",
+        "doc",
+        "infra"
+      ]
+    }
+  ]
+}
