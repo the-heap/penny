@@ -63,6 +63,13 @@ cd penny
 
 # install libraries and dependencies
 npm install
+
+# Boot the project
+npm run start
+
+# You will need a special password to run the project! It's called an `environment variable`
+# To get this password, join our slack group and ask for it specifically!
+# this password let's us boot Penny so that it can connect to slack!
 ```
 
 # Terminology

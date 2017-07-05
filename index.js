@@ -1,9 +1,23 @@
+/*
+ Welcome and Intro
+   - This is the entry file where our slack bot is created and initialized.
+   - If you get lost, looks for big comment blocks like this one, and read them.
+   - If you get lost, ask questions in our slack channel: https://penny-woyvoplzst.now.sh/
+   - If you're looking for something to work on, grab an issue here: https://github.com/the-heap/penny/issues
+
+ * Project Resources *
+   - Node Slack SDK / API resources : https://slackapi.github.io/node-slack-sdk/
+   - Node Slack SDK RTM examples: https://github.com/slackapi/node-slack-sdk
+   - If you are unsure of how to contribute to open source, please checkout this resource:
+   - http://theheap.us/page/resources/
+  =========================== */
+
 // ===========================
 // Project setup!
 // ===========================
 
 // NATIVE NODE LIBRARIES
-const readline = require("readline");
+const readline = require("readline"); // for pasting the slack_bot_token if it wasn't exported to env
 
 // THIRD PARTY LIBRARIES
 const RtmClient = require("@slack/client").RtmClient;
