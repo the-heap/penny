@@ -33,6 +33,11 @@ const rl = readline.createInterface({
 // VARIABLES
 var bot_token = process.env.SLACK_BOT_TOKEN || "";
 
+//GLOBALS
+var global = {
+  penny: undefined
+};
+
 // check if slack bot token env var exists before booting the program
 if (process.env.SLACK_BOT_TOKEN) {
   init_bot();
@@ -70,11 +75,23 @@ function init_bot() {
         channel = c.log;
       }
     }
-  });
 
+    // Find penny and assign to the global object
+
+    for (let u of rtmStartData.users) {
+      if (u.name === "penny_bot") {
+        global.penny = u;
+        console.log(global.penny);
+      }
+    }
+  });
   // Handle Receiving a message
   rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
-    console.log("Message:", message);
+    // console.log(message);
+    console.log("Message: !!!!!!!!!!!!!!!!!!!!!!", message, global.penny);
+    if (message.text.includes(`<@${global.penny}>`)) {
+      rtm.send("Test");
+    }
   });
 
   // Handle the connection opening
