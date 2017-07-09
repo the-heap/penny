@@ -85,12 +85,13 @@ function init_bot() {
       }
     }
   });
-  // Handle Receiving a message
+
+  // Handle receiving a message
+  // Check if the message includes penny's ID. If it does, send a message to the draw_it channel
   rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
-    // console.log(message);
-    console.log("Message: !!!!!!!!!!!!!!!!!!!!!!", message, global.penny);
-    if (message.text.includes(`<@${global.penny}>`)) {
-      rtm.send("Test");
+    if (message.text.includes(`<@${global.penny.id}>`)) {
+      console.log(global.penny.id);
+      rtm.sendMessage("Test", "C63GFH05V");
     }
   });
 
