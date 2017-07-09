@@ -18,6 +18,7 @@
 
 // NATIVE NODE LIBRARIES
 const readline = require("readline"); // for pasting the slack_bot_token if it wasn't exported to env
+const fs = require("fs"); // final system
 
 // THIRD PARTY LIBRARIES
 const RtmClient = require("@slack/client").RtmClient;
@@ -55,6 +56,8 @@ if (process.env.SLACK_BOT_TOKEN) {
 
 function init_bot() {
   console.log("Initializing Penny...");
+  var prompts = fs.readFileSync("prompts.json", "utf8");
+  console.log(prompts);
 
   /*** BOT variables and Constants ***/
 
