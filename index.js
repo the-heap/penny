@@ -18,6 +18,7 @@
 
 // NATIVE NODE LIBRARIES
 const readline = require("readline"); // for pasting the slack_bot_token if it wasn't exported to env
+const fs = require("fs"); // final system
 
 // THIRD PARTY LIBRARIES
 const RtmClient = require("@slack/client").RtmClient;
@@ -33,6 +34,13 @@ const rl = readline.createInterface({
 // VARIABLES
 var bot_token = process.env.SLACK_BOT_TOKEN || "";
 
+//GLOBALS
+var global = {
+  penny: undefined
+};
+
+var prompts = fs.readFileSync("testprompts.json", "utf8");
+var parsedAsJson = JSON.parse(prompts);
 // check if slack bot token env var exists before booting the program
 if (process.env.SLACK_BOT_TOKEN) {
   init_bot();
@@ -50,6 +58,8 @@ if (process.env.SLACK_BOT_TOKEN) {
 
 function init_bot() {
   console.log("Initializing Penny...");
+  var prompts = fs.readFileSync("testprompts.json", "utf8");
+  console.log(prompts);
 
   /*** BOT variables and Constants ***/
 
@@ -70,11 +80,51 @@ function init_bot() {
         channel = c.log;
       }
     }
+
+    // Find penny and assign to the global object
+
+    for (let u of rtmStartData.users) {
+      if (u.name === "penny_bot") {
+        global.penny = u;
+        console.log(global.penny);
+      }
+    }
   });
 
-  // Handle Receiving a message
+  // Handle receiving a message
+  // Check if the message includes penny's ID. If it does, send a message to the draw_it channel
   rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
-    console.log("Message:", message);
+    if (message.text.includes(`<@${global.penny.id}>`)) {
+      let responseText = "";
+      if (message.text.includes("give") && message.text.includes("prompt")) {
+        let singlePrompt =
+          parsedAsJson.prompts[
+            Math.floor(Math.random() * parsedAsJson.prompts.length)
+          ];
+        responseText = singlePrompt;
+        //responseText = parsedAsJson.prompts[0];
+        rtm.sendMessage(responseText, "C63GFH05V");
+      } else if (
+        message.text.includes("submit") &&
+        message.text.includes("prompt")
+      ) {
+        let submitPromptText = message.text.substr(27, message.text.length);
+
+        fs.readFile("testprompts.json", "utf8", function(err, data) {
+          let json = JSON.parse(data);
+          json.prompts.push(submitPromptText);
+          fs.writeFileSync("testprompts.json", JSON.stringify(json), "utf8");
+        });
+
+        rtm.sendMessage(`Prompt submitted: ${submitPromptText}`, "C63GFH05V");
+      } else {
+        responseText =
+          "Hi I'm Penny; I can do the following if you `@` mention me!\n";
+        responseText += "`@penny_bot give prompt` \n";
+        responseText += "`@penny_bot, submit prompt '<your prompt here>'`";
+        rtm.sendMessage(responseText, "C63GFH05V");
+      }
+    }
   });
 
   // Handle the connection opening
