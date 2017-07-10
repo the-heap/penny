@@ -1,5 +1,5 @@
 # penny
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
 [![Twitter](https://img.shields.io/twitter/follow/theheap_.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=theheap_)
 [![](https://slackin-onxcmypksl.now.sh/badge.svg)](https://slackin-onxcmypksl.now.sh/)
@@ -88,8 +88,8 @@ The following terminology might help to clarify some aspects of the project.
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars3.githubusercontent.com/u/12987958?v=3" width="75px;"/><br /><sub>Tyler</sub>](http://tylersloane.com)<br />[💬](#question-teesloane "Answering Questions") [💻](https://github.com/teesloane/Penny/commits?author=teesloane "Code") [📖](https://github.com/teesloane/Penny/commits?author=teesloane "Documentation") [🚇](#infra-teesloane "Infrastructure (Hosting, Build-Tools, etc)") |
-| :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/12987958?v=3" width="75px;"/><br /><sub>Tyler</sub>](http://tylersloane.com)<br />[💬](#question-teesloane "Answering Questions") [💻](https://github.com/teesloane/Penny/commits?author=teesloane "Code") [📖](https://github.com/teesloane/Penny/commits?author=teesloane "Documentation") [🚇](#infra-teesloane "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars2.githubusercontent.com/u/7462118?v=3" width="75px;"/><br /><sub>Kristina Groeger</sub>](https://twitter.com/gringogidget)<br />[💻](https://github.com/teesloane/Penny/commits?author=gringogidget "Code") [🎨](#design-gringogidget "Design") |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

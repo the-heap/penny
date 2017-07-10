@@ -18,6 +18,16 @@
         "doc",
         "infra"
       ]
+    },
+    {
+      "login": "gringogidget",
+      "name": "Kristina Groeger",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/7462118?v=3",
+      "profile": "https://twitter.com/gringogidget",
+      "contributions": [
+        "code",
+        "design"
+      ]
     }
   ]
 }
