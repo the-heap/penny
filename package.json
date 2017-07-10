@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/the-heap/penny#readme",
   "dependencies": {
-    "@slack/client": "^3.10.0"
+    "@slack/client": "^3.10.0",
+    "cron": "^1.2.1"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.3.0",
