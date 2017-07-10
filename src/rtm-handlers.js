@@ -1,4 +1,5 @@
 const fs = require("fs");
+const prompts = require("./prompt-handlers");
 const RtmClient = require("@slack/client").RtmClient;
 const CLIENT_EVENTS = require("@slack/client").CLIENT_EVENTS;
 const RTM_EVENTS = require("@slack/client").RTM_EVENTS;
@@ -38,6 +39,7 @@ function onOpenConnection(env) {
 // Check if the message includes penny's ID. If it does, send a message to the draw_it channel
 function onReceiveMessage(env) {
   env.rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
+    // TODO: Turn this into a nice ol' switch case
     if (message.text.includes(`<@${env.penny.id}>`)) {
       let responseText = "";
       if (message.text.includes("give") && message.text.includes("prompt")) {
