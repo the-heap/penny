@@ -2,9 +2,9 @@
   "name": "penny",
   "version": "0.0.1",
   "description": "Slackbot to encourage drawing.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "precommit": "lint-staged",
     "add-contributor": "all-contributors add",
     "generate": "all-contributors generate"
