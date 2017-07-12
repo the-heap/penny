@@ -39,33 +39,36 @@ function onOpenConnection(env) {
 // Check if the message includes penny's ID. If it does, send a message to the draw_it channel
 function onReceiveMessage(env) {
   env.rtm.on(RTM_EVENTS.MESSAGE, function handleRtmMessage(message) {
+    function checkMessage(msg) {
+      return message.text.includes(msg);
+    }
     // TODO: Turn this into a nice ol' switch case
     if (message.text.includes(`<@${env.penny.id}>`)) {
       let responseText = "";
-      if (message.text.includes("give") && message.text.includes("prompt")) {
-        env.rtm.sendMessage(prompts.getRandom(env), "C63GFH05V");
-      } else if (
-        message.text.includes("submit") &&
-        message.text.includes("prompt")
-      ) {
-        let submitPromptText = message.text.substr(27, message.text.length);
+      switch (true) {
+        case checkMessage("give prompt"):
+          env.rtm.sendMessage(prompts.getRandom(env), "C63GFH05V");
+          break;
+        case checkMessage("submit prompt"):
+          let submitPromptText = message.text.substr(27, message.text.length);
 
-        fs.readFile("prompts.json", "utf8", function(err, data) {
-          let json = JSON.parse(data);
-          json.prompts.push(submitPromptText);
-          fs.writeFileSync("prompts.json", JSON.stringify(json), "utf8");
-        });
+          fs.readFile("prompts.json", "utf8", function(err, data) {
+            let json = JSON.parse(data);
+            json.prompts.push(submitPromptText);
+            fs.writeFileSync("prompts.json", JSON.stringify(json), "utf8");
+          });
 
-        env.rtm.sendMessage(
-          `Prompt submitted: ${submitPromptText}`,
-          "C63GFH05V"
-        );
-      } else {
-        responseText =
-          "Hi I'm Penny; I can do the following if you `@` mention me!\n";
-        responseText += "`@penny_bot give prompt` \n";
-        responseText += "`@penny_bot, submit prompt '<your prompt here>'`";
-        env.rtm.sendMessage(responseText, "C63GFH05V");
+          env.rtm.sendMessage(
+            `Prompt submitted: ${submitPromptText}`,
+            "C63GFH05V"
+          );
+          break;
+        default:
+          responseText =
+            "Hi I'm Penny; I can do the following if you `@` mention me!\n";
+          responseText += "`@penny_bot give prompt` \n";
+          responseText += "`@penny_bot, submit prompt '<your prompt here>'`";
+          env.rtm.sendMessage(responseText, "C63GFH05V");
       }
     }
   });
