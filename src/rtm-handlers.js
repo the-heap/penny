@@ -42,13 +42,17 @@ function onReceiveMessage(env) {
     function checkMessage(msg) {
       return message.text.includes(msg);
     }
+
     // TODO: Turn this into a nice ol' switch case
     if (message.text.includes(`<@${env.penny.id}>`)) {
       let responseText = "";
       switch (true) {
         case checkMessage("give prompt"):
-          env.rtm.sendMessage(prompts.getRandom(env), "C63GFH05V");
+          message.channel == "C63GFH05V"
+            ? env.rtm.sendMessage(prompts.getRandom(env), "C63GFH05V")
+            : env.rtm.sendMessage(prompts.getRandom(env), message.channel);
           break;
+
         case checkMessage("submit prompt"):
           let submitPromptText = message.text.substr(27, message.text.length);
 
@@ -58,17 +62,27 @@ function onReceiveMessage(env) {
             fs.writeFileSync("prompts.json", JSON.stringify(json), "utf8");
           });
 
-          env.rtm.sendMessage(
-            `Prompt submitted: ${submitPromptText}`,
-            "C63GFH05V"
-          );
+          message.channel == "C63GFH05V"
+            ? env.rtm.sendMessage(
+                `Prompt submitted: ${submitPromptText}`,
+                "C63GFH05V"
+              )
+            : env.rtm.sendMessage(
+                `Prompt submitted: ${submitPromptText}`,
+                message.channel
+              );
           break;
+
         default:
           responseText =
             "Hi I'm Penny; I can do the following if you `@` mention me!\n";
           responseText += "`@penny_bot give prompt` \n";
           responseText += "`@penny_bot, submit prompt '<your prompt here>'`";
-          env.rtm.sendMessage(responseText, "C63GFH05V");
+
+          // Channel to respond in
+          message.channel == "C63GFH05V"
+            ? env.rtm.sendMessage(responseText, "C63GFH05V")
+            : env.rtm.sendMessage(responseText, message.channel);
       }
     }
   });
