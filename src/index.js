@@ -22,8 +22,9 @@ const fs = require("fs");
 const RtmClient = require("@slack/client").RtmClient;
 const rtmHandlers = require("./rtm-handlers");
 const prompts = require("./prompt-handlers");
-const ScheduledPrompt = require("./scheduled-prompt");
-const simplePromptGenerator = require("./simple-prompt-generator");
+
+// FOR SCHEDULED DRAWING PROMPTS
+const setupScheduledPrompts = require("./setup-scheduled-prompts");
 
 // CONSTANTS
 const READLINE = readline.createInterface({
@@ -69,32 +70,5 @@ function init_bot() {
   rtmHandlers.onReceiveMessage(env);
   rtmHandlers.startRtm(env);
 
-  /*** Scheduled prompt setup ***/
-  // TODO: move to a new file -> handleScheduling or something like that.
-  const scheduledPrompt = new ScheduledPrompt({
-    cronSchedule: "1 31 * * * *",
-    promptGenerator: simplePromptGenerator
-  });
-
-  // start listening for new prompts
-  scheduledPrompt.on(ScheduledPrompt.PROMPT_EVENT, function(prompt) {
-    // console.log("here's the prompt:", prompt);
-
-    /**
-     * Don't bother sending messages if bot is disconnected. Doing that
-     * repeatedly leads to errors.
-     *
-     * Sometimes `connected` is incorrect, maybe it is only updated when a
-     * message fails to go through? I haven't seen sending a message cause a
-     * crash when connected is `true` but internet connection is disabled.
-     * Crashes happen when connected is `false` and my internet connection is
-     * disabled.
-     */
-    if (!env.rtm.connected) return;
-
-    // send the prompt to the hardcoded #draw_it channel
-    env.rtm.sendMessage(prompt, "C63GFH05V").catch(error => {
-      console.error("error sending message", error);
-    });
-  });
+  setupScheduledPrompts(env);
 }

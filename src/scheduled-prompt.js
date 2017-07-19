@@ -1,5 +1,6 @@
 const CronJob = require("cron").CronJob;
 const EventEmitter = require("events");
+const promptHandlers = require("./prompt-handlers");
 
 /**
  * Wrap up message generating & sending together in a testable class.
@@ -11,16 +12,16 @@ const EventEmitter = require("events");
  * callback at the incorrect time.
  */
 class ScheduledPrompt extends EventEmitter {
-  constructor({ cronSchedule, promptGenerator }) {
+  constructor({ cronSchedule, env }) {
     super();
 
     this.job = new CronJob(
       cronSchedule,
       () => {
-        const prompt = promptGenerator.get();
-
+        const prompt = promptHandlers.getRandom(env);
+        const wrappedPrompt = `Time to draw! Your next masterpiece will be ${prompt}`;
         // let anything listening know there is a new prompt ready
-        this.emit(ScheduledPrompt.PROMPT_EVENT, prompt);
+        this.emit(ScheduledPrompt.PROMPT_EVENT, wrappedPrompt);
       },
       null,
       true
