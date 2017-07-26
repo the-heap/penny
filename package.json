@@ -4,7 +4,7 @@
   "description": "Slackbot to encourage drawing.",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon -e js src/index.js",
     "precommit": "lint-staged",
     "add-contributor": "all-contributors add",
     "generate": "all-contributors generate"
