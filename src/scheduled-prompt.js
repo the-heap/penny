@@ -19,7 +19,7 @@ class ScheduledPrompt extends EventEmitter {
       cronSchedule,
       () => {
         const prompt = promptHandlers.getRandom(env);
-        const wrappedPrompt = `Time to draw! Your next masterpiece will be ${prompt}`;
+        const wrappedPrompt = `Time to draw! Your drawing prompt is: \`${prompt}\``;
         // let anything listening know there is a new prompt ready
         this.emit(ScheduledPrompt.PROMPT_EVENT, wrappedPrompt);
       },
