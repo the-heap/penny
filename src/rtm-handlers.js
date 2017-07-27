@@ -1,5 +1,6 @@
 const fs = require("fs");
 const prompts = require("./prompt-handlers");
+const drawings = require("./drawing-handlers");
 const RtmClient = require("@slack/client").RtmClient;
 const CLIENT_EVENTS = require("@slack/client").CLIENT_EVENTS;
 const RTM_EVENTS = require("@slack/client").RTM_EVENTS;
@@ -77,7 +78,9 @@ function onReceiveMessage(env) {
           responseText =
             "Hi I'm Penny; I can do the following if you `@` mention me!\n";
           responseText += "`@penny_bot give prompt` \n";
-          responseText += "`@penny_bot, submit prompt '<your prompt here>'`";
+          responseText += "`@penny_bot, submit prompt '<your prompt here>'`\n ";
+          responseText +=
+            "You can also DM me your drawings as attachments with the comment `submit drawing`";
 
           // Channel to respond in
           message.channel == "C63GFH05V"
@@ -85,7 +88,35 @@ function onReceiveMessage(env) {
             : env.rtm.sendMessage(responseText, message.channel);
       }
     }
+
+    /**
+     * DMs to penny with attachments might not include penny's user id in the
+     * message, so this check happens outside the other if statement
+     */
+    if (checkMessage("submit drawing") && message.channel === "D63S3TAM7") {
+      handleDrawingSubmission(env, message);
+    }
   });
+}
+
+const validFileTypes = ["jpg", "png", "gif"];
+
+function handleDrawingSubmission(env, message) {
+  if (!message.file) {
+    env.rtm.sendMessage("Where is drawing?", message.channel);
+  } else if (message.file && !validFileTypes.includes(message.file.filetype)) {
+    env.rtm.sendMessage(
+      "I don't think you attached a drawing. Make sure you send me a .png, .jpg, or .gif",
+      message.channel
+    );
+  } else {
+    env.rtm.sendMessage("Got drawing!", message.channel);
+
+    drawings
+      .addImageToList(message.file)
+      .then(result => console.log("saved image info", result))
+      .catch(error => console.error("error", error));
+  }
 }
 
 function startRtm(env) {
