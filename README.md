@@ -56,6 +56,7 @@ git clone git@github.com:the-heap/penny.git
 ```
 
 3. Install dependencies
+4. You'll need node >=8. You can manage versions of Node easily with a tool such as [nvm](https://github.com/creationix/nvm). If you use `nvm` run `nvm use` to use the projects version of node. If it is not installed on your system, you'll be prompted to install it.
 
 ```sh
 # change directories to Penny
